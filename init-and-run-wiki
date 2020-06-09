@@ -29,6 +29,8 @@ else
   fi
 fi
 
+DEFAULT_PARAMS="\"root-tiddler=$:/core/save/all\" \"root-render-type=text/plain\" \"root-serve-type=text/html\""
+
 OPTIONAL_PARAMS=""
 # set prefix if not emptystring
 if [ ! -z "${SERVE_URI:+x}" ]; then
@@ -37,9 +39,9 @@ if [ ! -z "${SERVE_URI:+x}" ]; then
 fi
 
 # set authenticated-user-header if not emptystring
-if [ ! -z "${X_AUTH_HEADER:+x}" ]; then
-  echo "Setting authenticated-user-header to $X_AUTH_HEADER"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS \"authenticated-user-header=$X_AUTH_HEADER\""
+if [ ! -z "${AUTH_HEADER:+x}" ]; then
+  echo "Setting authenticated-user-header to $AUTH_HEADER"
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS \"authenticated-user-header=$AUTH_HEADER\""
 fi
 
 # set port if not emptystring
@@ -65,4 +67,5 @@ fi
 if [ ! -z "${OPTIONAL_PARAMS}" ]; then
   echo "Running with parameters: ${OPTIONAL_PARAMS}"
 fi
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen host=0.0.0.0 root-tiddler="$:/core/save/all" root-render-type="text/plain" root-serve-type="text/html" $OPTIONAL_PARAMS
+echo Running "exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen host=0.0.0.0 $DEFAULT_PARAMS $OPTIONAL_PARAMS"
+exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen host=0.0.0.0 $DEFAULT_PARAMS $OPTIONAL_PARAMS
