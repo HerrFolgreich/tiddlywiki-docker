@@ -56,7 +56,7 @@ if [ ! -z "${USERNAME:+x}" ]; then
 fi
 
 # set debug if not emptystring
-if [ ! -z "${PORT:+x}" ]; then
+if [ ! -z "${DEBUG:+x}" ]; then
   echo "Enabling debug logging"
   OPTIONAL_PARAMS="$OPTIONAL_PARAMS debug=full"
 fi
