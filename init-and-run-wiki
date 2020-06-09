@@ -29,7 +29,27 @@ else
   fi
 fi
 
+OPTIONAL_PARAMS=""
+# set prefix if not emptystring
+if [ ! -z "${SERVE_URI:+x}" ]; then
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS path-prefix=\"$SERVE_URI\" "
+fi
+
+# set authenticated-user-header if not emptystring
+if [ ! -z "${X_AUTH_HEADER:+x}"]; then
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS authenticated-user-header=$X_AUTH_HEADER "
+fi
+
+# set port if not emptystring
+if [ ! -z "${PORT:+x}"]; then
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS port=$PORT "
+fi
+
+# set username if not emptystring, set password if set (allows empty password)
+if [ ! -z "${USERNAME:+x}"]; then
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS username=\"$USERNAME\" password=\"${PASSWORD-wiki}\" "
+fi
+
 # Start the tiddlywiki server
 
-exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --server 8080 $:/core/save/all text/plain text/html "${USERNAME:-user}" "${PASSWORD-wiki}" 0.0.0.0 ${SERVE_URI}
-
+exec /usr/bin/env node $NODEJS_V8_ARGS $tiddlywiki_script mywiki --listen host=0.0.0.0 root-tiddler="$:/core/save/all" root-render-type="text/plain" root-serve-type="text/html" $OPTIONAL_PARAMS
