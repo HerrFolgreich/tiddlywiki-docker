@@ -55,6 +55,12 @@ if [ ! -z "${USERNAME:+x}" ]; then
   OPTIONAL_PARAMS="$OPTIONAL_PARAMS username=\"$USERNAME\" password=\"${PASSWORD-wiki}\""
 fi
 
+# set debug if not emptystring
+if [ ! -z "${PORT:+x}" ]; then
+  echo "Enabling debug logging"
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS debug=full"
+fi
+
 # Start the tiddlywiki server
 if [ ! -z "${OPTIONAL_PARAMS}" ]; then
   echo "Running with parameters: ${OPTIONAL_PARAMS}"
