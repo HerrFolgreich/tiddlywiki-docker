@@ -1,4 +1,4 @@
-FROM node:14.4-alpine3.11
+FROM node:14.4-buster-slim
 
 RUN npm install -g tiddlywiki
 
