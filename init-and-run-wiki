@@ -41,7 +41,7 @@ fi
 # set authenticated-user-header if not emptystring
 if [ ! -z "${AUTH_HEADER:+x}" ]; then
   echo "Setting authenticated-user-header to $AUTH_HEADER"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS \"authenticated-user-header=$AUTH_HEADER\""
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS authenticated-user-header=$AUTH_HEADER"
 fi
 
 # set port if not emptystring
