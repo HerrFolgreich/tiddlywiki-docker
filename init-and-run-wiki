@@ -33,13 +33,13 @@ OPTIONAL_PARAMS=""
 # set prefix if not emptystring
 if [ ! -z "${SERVE_URI:+x}" ]; then
   echo "Setting path-prefix to $SERVE_URI"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS path-prefix=\"$SERVE_URI\""
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS \"path-prefix=$SERVE_URI\""
 fi
 
 # set authenticated-user-header if not emptystring
 if [ ! -z "${X_AUTH_HEADER:+x}" ]; then
   echo "Setting authenticated-user-header to $X_AUTH_HEADER"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS authenticated-user-header=\"$X_AUTH_HEADER\""
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS \"authenticated-user-header=$X_AUTH_HEADER\""
 fi
 
 # set port if not emptystring
@@ -52,13 +52,13 @@ fi
 if [ ! -z "${USERNAME:+x}" ]; then
   echo "Setting username to $USERNAME"
   echo "Setting password to \"${PASSWORD-wiki}\""
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS username=\"$USERNAME\" password=\"${PASSWORD-wiki}\""
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS \"username=$USERNAME\" \"password=${PASSWORD-wiki}\""
 fi
 
 # set debug if not emptystring
 if [ ! -z "${DEBUG:+x}" ]; then
   echo "Enabling debug logging"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS debug=full"
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS debug-level=full"
 fi
 
 # Start the tiddlywiki server
