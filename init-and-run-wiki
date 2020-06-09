@@ -33,26 +33,26 @@ OPTIONAL_PARAMS=""
 # set prefix if not emptystring
 if [ ! -z "${SERVE_URI:+x}" ]; then
   echo "Setting path-prefix to $SERVE_URI"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS path-prefix=\"$SERVE_URI\" "
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS path-prefix=\"$SERVE_URI\""
 fi
 
 # set authenticated-user-header if not emptystring
 if [ ! -z "${X_AUTH_HEADER:+x}" ]; then
   echo "Setting authenticated-user-header to $X_AUTH_HEADER"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS authenticated-user-header=\"$X_AUTH_HEADER\" "
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS authenticated-user-header=\"$X_AUTH_HEADER\""
 fi
 
 # set port if not emptystring
 if [ ! -z "${PORT:+x}" ]; then
   echo "Setting port to $PORT"
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS port=$PORT "
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS port=$PORT"
 fi
 
 # set username if not emptystring, set password if set (allows empty password)
 if [ ! -z "${USERNAME:+x}" ]; then
   echo "Setting username to $USERNAME"
   echo "Setting password to \"${PASSWORD-wiki}\""
-  OPTIONAL_PARAMS="$OPTIONAL_PARAMS username=\"$USERNAME\" password=\"${PASSWORD-wiki}\" "
+  OPTIONAL_PARAMS="$OPTIONAL_PARAMS username=\"$USERNAME\" password=\"${PASSWORD-wiki}\""
 fi
 
 # Start the tiddlywiki server
