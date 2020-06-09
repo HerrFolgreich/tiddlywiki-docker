@@ -1,4 +1,4 @@
-FROM node:alpine3.10
+FROM node:14.4-alpine3.11
 
 RUN npm install -g tiddlywiki
 
