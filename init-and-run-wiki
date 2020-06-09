@@ -36,17 +36,17 @@ if [ ! -z "${SERVE_URI:+x}" ]; then
 fi
 
 # set authenticated-user-header if not emptystring
-if [ ! -z "${X_AUTH_HEADER:+x}"]; then
+if [ ! -z "${X_AUTH_HEADER:+x}" ]; then
   OPTIONAL_PARAMS="$OPTIONAL_PARAMS authenticated-user-header=$X_AUTH_HEADER "
 fi
 
 # set port if not emptystring
-if [ ! -z "${PORT:+x}"]; then
+if [ ! -z "${PORT:+x}" ]; then
   OPTIONAL_PARAMS="$OPTIONAL_PARAMS port=$PORT "
 fi
 
 # set username if not emptystring, set password if set (allows empty password)
-if [ ! -z "${USERNAME:+x}"]; then
+if [ ! -z "${USERNAME:+x}" ]; then
   OPTIONAL_PARAMS="$OPTIONAL_PARAMS username=\"$USERNAME\" password=\"${PASSWORD-wiki}\" "
 fi
 
