@@ -1,4 +1,8 @@
-FROM node:14.4-buster-slim
+FROM node:14.15-buster-slim
+
+LABEL org.opencontainers.image.authors "ChrisBraucker"
+LABEL org.opencontainers.image.source "https://github.com/chrisbraucker/tiddlywiki-docker"
+LABEL org.opencontainers.image.description "TiddlyWiki Node App, see this containers GitHub repo for more info"
 
 RUN npm install -g tiddlywiki
 
